@@ -12,7 +12,7 @@ module.exports = {
 	output: {
 		path: path.resolve(__dirname, 'dist'),
 		filename: 'bundle.[contenthash].js',
-		clean: true
+		clean: process.env.NODE_ENV === "production"
 	},
 	devtool: 'source-map',
 	module: {
@@ -26,7 +26,7 @@ module.exports = {
 						loader: 'css-loader',
 						options: {
 							sourceMap: true,
-							modules: true,
+							modules: false,
 						}
 					},
 					{
@@ -49,7 +49,7 @@ module.exports = {
 		open: true,
 		hot: true,
 		compress: true,
-		port: 8000,
+		port: 3000,
 	},
 	plugins: [
 		new HtmlWebpackPlugin({
